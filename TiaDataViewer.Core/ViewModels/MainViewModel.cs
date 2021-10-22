@@ -15,14 +15,16 @@ namespace TiaDataViewer.Core.ViewModels
         private readonly IFileService _fileService = Ioc.Default.GetRequiredService<IFileService>();
         private readonly IXmlService _xmlService = Ioc.Default.GetRequiredService<IXmlService>();
 
+        // Start page
+        private readonly IBaseViewModel _startPageViewModel = new StartViewModel();
+
         public MainViewModel()
         {
             _selectedPageViewModel = _startPageViewModel;
             LoadFileCommand = new AsyncRelayCommand(LoadFileAsync);
         }
 
-        // Start page
-        private IBaseViewModel _startPageViewModel = new StartViewModel();
+        // ----- Properties -----
 
         // Selected Page
         private IBaseViewModel _selectedPageViewModel;
@@ -34,6 +36,8 @@ namespace TiaDataViewer.Core.ViewModels
 
         // Window title
         public string Title => "TIA Selection Tool - Datei-Viewer" + SelectedPageViewModel?.TitleExtention;
+
+        // ----- Commands -----
 
         // Load file command
         public IAsyncRelayCommand LoadFileCommand { get; }

@@ -12,7 +12,7 @@ namespace TiaDataViewer.Wpf.Views
         }
 
         // Button to scroll list of types to the left
-        private void xButtonLeft_Click(object sender, RoutedEventArgs e)
+        private void ButtonLeft_Click(object sender, RoutedEventArgs e)
         {
             Decorator border = VisualTreeHelper.GetChild(xTypeList, 0) as Decorator;
             ScrollViewer scrollViewer = border.Child as ScrollViewer;
@@ -21,7 +21,7 @@ namespace TiaDataViewer.Wpf.Views
         }
 
         // Button to scroll list of types to the right
-        private void xButtonRight_Click(object sender, RoutedEventArgs e)
+        private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
             Decorator border = VisualTreeHelper.GetChild(xTypeList, 0) as Decorator;
             ScrollViewer scrollViewer = border.Child as ScrollViewer;
@@ -30,7 +30,7 @@ namespace TiaDataViewer.Wpf.Views
         }
 
         // Scroll list of types by mouse wheel
-        private void xTypeList_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
+        private void TypeList_MouseWheel(object sender, System.Windows.Input.MouseWheelEventArgs e)
         {
             Decorator border = VisualTreeHelper.GetChild(xTypeList, 0) as Decorator;
             ScrollViewer scrollViewer = border.Child as ScrollViewer;

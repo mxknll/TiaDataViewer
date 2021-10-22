@@ -12,11 +12,7 @@ namespace TiaDataViewer.Core.Services
             openFileDialog.FilterIndex = 2;
             openFileDialog.RestoreDirectory = true;
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                return openFileDialog.FileName;
-            }
-            return string.Empty;
+            return openFileDialog.ShowDialog() == DialogResult.OK ? openFileDialog.FileName : string.Empty;
         }
     }
 }

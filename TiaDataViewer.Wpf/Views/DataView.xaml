@@ -10,15 +10,15 @@
 
     <DockPanel>
         <!--Upper bar: List of types-->
-        <DockPanel DockPanel.Dock="Top" Background="{StaticResource SolidColorBrush3}" MouseWheel="xTypeList_MouseWheel">
+        <DockPanel DockPanel.Dock="Top" Background="{StaticResource SolidColorBrush3}" MouseWheel="TypeList_MouseWheel">
             <Button x:Name="xButtonLeft" Style="{StaticResource HorizontalScrollButton}" 
-                    Content="&#10096;" Click="xButtonLeft_Click"/>
+                    Content="&#10096;" Click="ButtonLeft_Click"/>
             <Button x:Name="xButtonRight" Style="{StaticResource HorizontalScrollButton}" 
-                    Content="&#10097;" DockPanel.Dock="right" Click="xButtonRight_Click"/>
+                    Content="&#10097;" DockPanel.Dock="right" Click="ButtonRight_Click"/>
             <ListBox x:Name="xTypeList" Height="50" BorderThickness="0"
                      ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}" 
                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                     Background="{StaticResource SolidColorBrush3}" PreviewMouseWheel="xTypeList_MouseWheel">
+                     Background="{StaticResource SolidColorBrush3}" PreviewMouseWheel="TypeList_MouseWheel">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>

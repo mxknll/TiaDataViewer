@@ -8,7 +8,7 @@ namespace TiaDataViewer.Core.ViewModels
     public class DataViewModel : ObservableRecipient, IBaseViewModel
     {
         // The selected TIA Selection Tool
-        private TiaSelectionToolModel _tool;
+        private readonly TiaSelectionToolModel _tool;
 
         public DataViewModel(TiaSelectionToolModel tool)
         {
@@ -26,11 +26,13 @@ namespace TiaDataViewer.Core.ViewModels
             SelectedType = Types.FirstOrDefault();
         }
 
+        // ----- Properties -----
+
         // Window title extension
         public string TitleExtention => $" - \"{_tool.FileName}\"";
 
         // List of all Types
-        private IEnumerable<TypeModel> _types;
+        private readonly IEnumerable<TypeModel> _types;
         public IEnumerable<TypeModel> Types => _types;
 
         // Selected type (upper bar)
@@ -46,8 +48,8 @@ namespace TiaDataViewer.Core.ViewModels
         }
 
         // List of nodes of the type selected
-        public IEnumerable<NodeModel> NodesOfSelectedType => _tool is null || SelectedType is null ? null :
-                                                      _tool.Business.Graph.Nodes.Where(node => node.Type == _selectedType.Title);
+        public IEnumerable<NodeModel> NodesOfSelectedType => SelectedType is null ? null :
+                                                                _tool.Business.Graph.Nodes.Where(node => node.Type == _selectedType.Title);
 
         // Selected node
         private NodeModel _selectedNode;
