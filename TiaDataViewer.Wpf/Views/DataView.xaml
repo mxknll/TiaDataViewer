@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="TiaDataViewer.Wpf.Views.DataView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TiaDataViewer.Wpf.Views"
+      xmlns:vm="clr-namespace:TiaDataViewer.Core.ViewModels;assembly=TiaDataViewer.Core"
+      mc:Ignorable="d" 
+      d:DesignHeight="540" d:DesignWidth="960">
+
+    <DockPanel>
+        <!--Upper bar: List of types-->
+        <DockPanel DockPanel.Dock="Top" Background="{StaticResource SolidColorBrush3}" MouseWheel="xTypeList_MouseWheel">
+            <Button x:Name="xButtonLeft" Style="{StaticResource HorizontalScrollButton}" 
+                    Content="&#10096;" Click="xButtonLeft_Click"/>
+            <Button x:Name="xButtonRight" Style="{StaticResource HorizontalScrollButton}" 
+                    Content="&#10097;" DockPanel.Dock="right" Click="xButtonRight_Click"/>
+            <ListBox x:Name="xTypeList" Height="50" BorderThickness="0"
+                     ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}" 
+                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                     Background="{StaticResource SolidColorBrush3}" PreviewMouseWheel="xTypeList_MouseWheel">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border x:Name="xBorder" Style="{StaticResource RoundedBorder}" >
+                            <TextBlock x:Name="xText" Text="{Binding Text}" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                       Foreground="{StaticResource SolidColorBrush1}"/>
+                        </Border>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="True">
+                                <Setter TargetName="xBorder" Property="Background" Value="{StaticResource SolidColorBrush1}"/>
+                                <Setter TargetName="xText" Property="Foreground" Value="{StaticResource SolidColorBrush3}"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <!--Override default SelectedItem style-->
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}" >
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </DockPanel>
+        
+        <!--Center: List of nodes-->
+        <ListView ItemsSource="{Binding NodesOfSelectedType}" SelectedItem="{Binding SelectedNode}">
+            <!--Hide listview column headers-->
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn Width="200"
+                            DisplayMemberBinding="{Binding Title}" >
+                    </GridViewColumn>
+                    <GridViewColumn Width="Auto"
+                            DisplayMemberBinding="{Binding NumberOfProperties, StringFormat=Eigenschaften: {0}}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\App.ico" />
+    <None Remove="Icons\Compare.png" />
+    <None Remove="Icons\CsvExport.png" />
+    <None Remove="Icons\FileOpen.png" />
+    <None Remove="Icons\Settings.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TiaDataViewer.Core\TiaDataViewer.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\App.ico" />
+    <Resource Include="Icons\Compare.png" />
+    <Resource Include="Icons\CsvExport.png" />
+    <Resource Include="Icons\FileOpen.png" />
+    <Resource Include="Icons\Settings.png" />
+  </ItemGroup>
+
+</Project>

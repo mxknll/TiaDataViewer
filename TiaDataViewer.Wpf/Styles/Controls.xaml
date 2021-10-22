@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:TiaDataViewer.Wpf">
+
+    <!--Button Base-->
+    <Style TargetType="{x:Type Button}" x:Key="Button">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <!--Rounded Button (navigation)-->
+    <Style TargetType="{x:Type Button}" x:Key="RoundedButton" BasedOn="{StaticResource Button}">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="7.5"/>
+        <Setter Property="Background" Value="{StaticResource SolidColorBrush3}"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="2.5"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <!-- Horizontal Scroll Button (top bar) -->
+    <Style TargetType="{x:Type Button}" x:Key="HorizontalScrollButton" BasedOn="{StaticResource Button}">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <!--<Setter Property="Padding" Value="5"/>-->
+        <Setter Property="Background" Value="{StaticResource SolidColorBrush3}"/>
+        <Setter Property="Foreground" Value="{StaticResource SolidColorBrush1}"/>
+        <Setter Property="Width" Value="25"/>
+        <Setter Property="FontSize" Value="24"/>
+    </Style>
+
+    <!--Rounded Border (top bar)-->
+    <Style TargetType="{x:Type Border}" x:Key="RoundedBorder">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource SolidColorBrush1}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="{StaticResource SolidColorBrush3}"/>
+        <Setter Property="CornerRadius" Value="2.5"/>
+    </Style>
+
+</ResourceDictionary>
