@@ -44,6 +44,7 @@
                 <Image Source="/Icons/CsvExport.png"/>
             </Button>
         </StackPanel>
+        <!--Center: Selected page-->
         <ContentControl Content="{Binding SelectedPageViewModel}"/>
     </DockPanel>
 </Window>

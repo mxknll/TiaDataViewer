@@ -20,10 +20,10 @@ namespace TiaDataViewer.Core.ViewModels
                             {
                                 Title = group.Key,
                                 Count = group.Count()
-                            });
+                            }).ToList();
 
             // Select first type (top bar)
-            SelectedType = Types.FirstOrDefault();
+            SelectedType = Types.First();
         }
 
         // ----- Properties -----

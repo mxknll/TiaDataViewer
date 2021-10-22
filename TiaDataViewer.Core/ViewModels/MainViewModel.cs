@@ -48,7 +48,7 @@ namespace TiaDataViewer.Core.ViewModels
                 // Open file
                 string filePath = _fileService.OpenFile();
 
-                if (string.IsNullOrEmpty(filePath) == false)
+                if (string.IsNullOrWhiteSpace(filePath) == false)
                 {
                     // Deserialize XML
                     TiaSelectionToolModel tool = await _xmlService.DeserializeXmlAsync<TiaSelectionToolModel>(filePath);

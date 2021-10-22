@@ -15,7 +15,7 @@ namespace TiaDataViewer.Core.Models
 
         public int NumberOfProperties => Properties.Count;
 
-        // Title is the value of property of key 'Name' if existant, else of property of key 'Id', else is placeholder
+        // If list is empty or no property of key 'Name' nor of key 'Id' exists, title is placeholder to avoid blanks
         public string Title => Properties.Count == 0 ? "<Node ist leer>" :
                                Properties.Any(x => x.Key == "Name") ? Properties.First(x => x.Key == "Name").Value : 
                                Properties.Any(x => x.Key == "Id") ? Properties.First(x => x.Key == "Id").Value : "<Titel fehlt>";

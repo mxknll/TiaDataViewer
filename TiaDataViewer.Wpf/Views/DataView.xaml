@@ -4,17 +4,21 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TiaDataViewer.Wpf.Views"
-      xmlns:vm="clr-namespace:TiaDataViewer.Core.ViewModels;assembly=TiaDataViewer.Core"
-      mc:Ignorable="d" 
+      xmlns:vm="clr-namespace:TiaDataViewer.Core.ViewModels;assembly=TiaDataViewer.Core" 
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance Type=vm:DataViewModel}"
       d:DesignHeight="540" d:DesignWidth="960">
 
     <DockPanel>
         <!--Upper bar: List of types-->
         <DockPanel DockPanel.Dock="Top" Background="{StaticResource SolidColorBrush3}" MouseWheel="TypeList_MouseWheel">
+            <!--Button left-->
             <Button x:Name="xButtonLeft" Style="{StaticResource HorizontalScrollButton}" 
                     Content="&#10096;" Click="ButtonLeft_Click"/>
+            <!--Button right-->
             <Button x:Name="xButtonRight" Style="{StaticResource HorizontalScrollButton}" 
                     Content="&#10097;" DockPanel.Dock="right" Click="ButtonRight_Click"/>
+            <!--List of types-->
             <ListBox x:Name="xTypeList" Height="50" BorderThickness="0"
                      ItemsSource="{Binding Types}" SelectedItem="{Binding SelectedType}" 
                      ScrollViewer.HorizontalScrollBarVisibility="Hidden"
@@ -31,6 +35,7 @@
                                        HorizontalAlignment="Center" VerticalAlignment="Center" 
                                        Foreground="{StaticResource SolidColorBrush1}"/>
                         </Border>
+                        <!--Custom SelectedItem styling-->
                         <DataTemplate.Triggers>
                             <DataTrigger Binding="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="True">
                                 <Setter TargetName="xBorder" Property="Background" Value="{StaticResource SolidColorBrush1}"/>
@@ -39,7 +44,7 @@
                         </DataTemplate.Triggers>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-                <!--Override default SelectedItem style-->
+                <!--Override default SelectedItem styling-->
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}" >
                         <Setter Property="Template">
@@ -62,6 +67,7 @@
                     <Setter Property="Visibility" Value="Collapsed" />
                 </Style>
             </ListView.Resources>
+            <!--List of nodes-->
             <ListView.View>
                 <GridView >
                     <GridViewColumn Width="200"
