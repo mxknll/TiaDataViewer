@@ -14,21 +14,22 @@ namespace TiaDataViewer.Core.ViewModels
         {
             _tool = tool;
 
-            // Group and count nodes by type
+            // Group notes by type, sort out groups of invalid types, count nodes by type
             _types = tool.Business.Graph.Nodes.GroupBy(node => node.Type)
+                            .Where(x => string.IsNullOrWhiteSpace(x.Key) == false)
                             .Select(group => new TypeModel()
                             {
                                 Title = group.Key,
                                 Count = group.Count()
                             }).ToList();
-
+            
             // Select first type (top bar)
             SelectedType = Types.First();
         }
 
         // ----- Properties -----
 
-        // Window title extension
+        // Window title extention
         public string TitleExtention => $" - \"{_tool.FileName}\"";
 
         // List of all Types

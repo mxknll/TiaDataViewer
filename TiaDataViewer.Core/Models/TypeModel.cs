@@ -6,6 +6,6 @@
 
         public int Count { get; set; }
 
-        public string Text => string.IsNullOrWhiteSpace(Title) ? $"<Titel fehlt> ({Count})" : $"{Title} ({Count})";
+        public string Text => $"{Title} ({Count})";
     }
 }
