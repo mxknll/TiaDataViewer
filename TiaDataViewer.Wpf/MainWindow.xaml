@@ -30,7 +30,7 @@
         <StackPanel Height="50" DockPanel.Dock="Bottom" Orientation="Horizontal" 
                     Background="{StaticResource SolidColorBrush1}">
             <Button Style="{StaticResource RoundedButton}" 
-                    Command="{Binding LoadFileCommand}" ToolTip="Öffnen einer neuen .tia-Datei.">
+                    Command="{Binding LoadFileCommand}" ToolTip="Öffnen und Einlesen einer bestehenden .tia-Datei.">
                 <Image Source="/Icons/FileOpen.png"/>
             </Button>
             <Rectangle Fill="{StaticResource SolidColorBrush3}" Margin="5" Width="1"/>
